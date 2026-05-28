@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="Username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="Password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const mensaje = document.getElementById('mensaje');
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ Username: username, Password: password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    mensaje.className = 'success';
+                    mensaje.textContent = '✓ ' + data.mensaje;
+                    mensaje.style.display = 'block';
+                } else {
+                    mensaje.className = 'error';
+                    mensaje.textContent = 'x ' + data.error;
+                    mensaje.style.display = 'block';
+                }
+            } catch (error) {
+                mensaje.className = 'error';
+                mensaje.textContent = 'Error de conexión';
+                mensaje.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

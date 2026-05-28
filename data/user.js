@@ -1,5 +1,9 @@
-const Usuario_Privado = {
-    Username: 'Admin13',
-    Password: 'Contraseña12.'
-}
-module.exports = Ususario_Privado;
+const usuarios = [
+  {
+    id: 1,
+    username: "Admin123",
+    password: "Contraseña123"
+  }
+];
+
+module.exports = usuarios;
