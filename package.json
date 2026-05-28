@@ -5,8 +5,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatiasMorales-17/Evaluacion_28_05_2026.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/MatiasMorales-17/Evaluacion_28_05_2026/issues"
+  },
+  "homepage": "https://github.com/MatiasMorales-17/Evaluacion_28_05_2026#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
